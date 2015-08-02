@@ -418,7 +418,7 @@ Your browser does not support the audio tag.
         result << '<ol>'
         node.items.each do |item|
           result << %(<li>
-<p>#{item.text}</p>
+#{item.text}
 </li>)
         end
         result << '</ol>'
@@ -451,10 +451,10 @@ Your browser does not support the audio tag.
         node.items.each do |terms, dd|
           result << '<li>'
           [*terms].each do |dt|
-            result << %(<p><em>#{dt.text}</em></p>)
+            result << %(<em>#{dt.text}</em>)
           end
           if dd
-            result << %(<p>#{dd.text}</p>) if dd.text?
+            result << %(#{dd.text}) if dd.text?
             result << dd.content if dd.blocks?
           end
           result << '</li>'
@@ -879,9 +879,9 @@ Your browser does not support the audio tag.
       node.items.each do |item|
         result << '<li>'
         if checklist && (item.attr? 'checkbox')
-          result << %(<p>#{(item.attr? 'checked') ? marker_checked : marker_unchecked}#{item.text}</p>)
+          result << %(#{(item.attr? 'checked') ? marker_checked : marker_unchecked}#{item.text})
         else
-          result << %(<p>#{item.text}</p>)
+          result << %(#{item.text})
         end
         result << item.content if item.blocks?
         result << '</li>'
